@@ -25,6 +25,7 @@ int main(int argc, char* argv[])
 		while(MPI_Wtime() - start < waiting_time)
 		{}
 		MPI_Send(&message, 1 , MPI_INT, 1, 0, MPI_COMM_WORLD);
+		MPI_Recv(&message, 1, MPI_INT, size-1,0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
 	}else{
 		MPI_Recv(&message, 1 ,MPI_INT, rank - 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
 		start = MPI_Wtime();
@@ -32,10 +33,9 @@ int main(int argc, char* argv[])
 		while(MPI_Wtime() - start < waiting_time)
 		{}		
 		
-		if(rank != size -1)
-			MPI_Send(&message, 1, MPI_INT, rank +1, 0, MPI_COMM_WORLD);
+		MPI_Send(&message, 1, MPI_INT,(rank +1)% size, 0, MPI_COMM_WORLD);
 	}
-	
+	MPI_Barrier(MPI_COMM_WORLD);
 	end =  MPI_Wtime();
 
 	printf("[P %d] gastou %.2f durante a tarefa. \n", rank,end-start);
