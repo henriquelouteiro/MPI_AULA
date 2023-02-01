@@ -17,7 +17,7 @@ int main(int argc, char* argv[]){
 	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
 	tag = 2312;
-	source = 0; dest = 1;
+	count = 1; source = 0; dest = 1;
 	request = MPI_REQUEST_NULL;
 
 	if(rank == source){
