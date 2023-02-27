@@ -59,15 +59,15 @@ void geraMatriz(int mat[][TAMMAX], const int tam)
 {
 	srand(time(NULL));
 
-	printf("\nMatriz gerada: \n\n");
+	//printf("\nMatriz gerada: \n\n");
     for(int i = 0; i < tam; i++)
     {
         for(int j = 0; j < tam; j++)
         {
             mat[i][j] = rand() % 10;
-    	    printf("%4d", mat[i][j]);
+    	    //printf("%4d", mat[i][j]);
         }
-        printf("\n");
+        //printf("\n");
  	}
 }
 
@@ -75,10 +75,10 @@ void geraVet(int Vet[], const int tam)
 {
 	srand(time(NULL));
 
-	printf("\nVetor gerado: \n\n");
+	//printf("\nVetor gerado: \n\n");
     for(int i = 0; i < tam; i++)
     {
         Vet[i] = rand() % 10;
-    	printf("%4d", Vet[i]);
+    	//printf("%4d", Vet[i]);
  	}
 }
